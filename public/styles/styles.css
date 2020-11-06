@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.jumbotron {
+    background-color: rgb(133, 25, 133);
+}
