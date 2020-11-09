@@ -1,4 +1,4 @@
-import uuidv4 from 'uuid/v4'
+import uuidv4 from 'uuid'
 import moment from 'moment'
 
 let recipes = []
@@ -23,7 +23,7 @@ const saveRecipes = () => {
 const getRecipes = () => recipes
 
 // Create recipes
-const creatRecipe = () => {
+const createRecipe = () => {
     const id = uuidv4()
     const timestamp = moment().valueOf()
 
@@ -48,3 +48,7 @@ const removeRecipe = (id) => {
         saveRecipes()
     }
 }
+
+recipes = loadRecipes()
+
+export { loadRecipes, getRecipes, saveRecipes, createRecipe, removeRecipe }
