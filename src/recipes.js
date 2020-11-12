@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
 import moment from 'moment'
-import { initializeEditPage, generateIngredientDom } from './views'
 
 let recipes = []
 
@@ -15,8 +14,6 @@ const loadRecipes = () => {
         return []
     }
 }
-
-recipes = loadRecipes()
 
 // save the recipes to local storage 
 const saveRecipes = () => {
@@ -44,6 +41,7 @@ const createRecipe = () => {
     return id
 }
 
+/// Get Recipe ID from URL
 const getRecipeFromUrl = () => {
     const recipeId = location.hash.substring(1)
     const recipe = recipes.find((r) => r.id == recipeId)
@@ -52,7 +50,7 @@ const getRecipeFromUrl = () => {
 }
 
 
-console.log(getRecipeFromUrl()) /////////////
+////////////// Ingredients
 
 
 // Create Ingredient
@@ -65,8 +63,6 @@ const createIngredient = (item) => {
     saveRecipes()
 } 
 
-//createIngredient('Oven')
-
 
 // Remove Ingredients
 const removeIngredient = (title) => {
@@ -77,6 +73,7 @@ const removeIngredient = (title) => {
         recipe.ingredients.splice(ingredientIndex, 1)
     }
     saveRecipes()
+
 }
 
 // Toggle Ingredients
@@ -91,7 +88,8 @@ const toggleIngredient = (title) => {
     }
 }
 
-loadRecipes()
+// End of Ingredients
+/////////////////
 
 // Remove a recipe
 const removeRecipe = (id) => {
@@ -163,9 +161,5 @@ const updateRecipe = (id, updates) => {
 
 
 recipes = loadRecipes()
-
-
-
-
 
 export { createIngredient, loadRecipes, getRecipes, saveRecipes, createRecipe, removeRecipe, sortRecipes, updateRecipe, toggleIngredient, removeIngredient, getRecipeFromUrl }
